@@ -1,5 +1,8 @@
 #include "stdint.h"
 
+//疑似：https://github.com/qemu/qemu/blob/master/include/hw/riscv/opentitan.h
+//疑似：https://github.com/qemu/qemu/blob/master/hw/riscv/opentitan.c#L207
+
 #define UART_BASE 0x10000000
 
 #define UART_RBR 0x0
