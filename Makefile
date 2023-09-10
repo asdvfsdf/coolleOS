@@ -10,11 +10,11 @@ AR 		= $(CROSS_COMPILE)ar
 OBJDUMP = $(CROSS_COMPILE)objdump
 GDB     = $(CROSS_COMPILE)gdb
 
-INC_KERNEL = -Iuart  -Iinclude
+INC_KERNEL = -Iuart  -Iinclude -Iutils
 
-CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c)
+CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c) $(wildcard utils/*.c)
  
-CFLAGS = -fno-builtin -nostdlib -nostdinc -Wall
+CFLAGS = -fno-builtin -nostdlib -nostdinc -mcmodel=medany -Wall
 
 CFLAGS_KERNEL=$(INC_KERNEL) $(CFLAGS)
 

@@ -1,5 +1,6 @@
 #include "sbi.h"
-#include "uart.h"
+#include "string.h"
+
 
 void main()
 {
@@ -9,6 +10,7 @@ void main()
     SBI_PUTCHAR('l');
     SBI_PUTCHAR('o');
     SBI_PUTCHAR('\n');
-    myputchar('f');
+    panic("OS is a fucking bitch");
+
     while(1) {}
 }

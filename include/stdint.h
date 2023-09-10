@@ -1,6 +1,6 @@
 #ifndef __RISCV_STDINT_H__
 #define __RISCV_STDINT_H__
-
+//文件来源：https://blog.csdn.net/bellediao/article/details/82967645
 typedef signed char int8_t;
 typedef unsigned char uint8_t;
 typedef short int16_t;
