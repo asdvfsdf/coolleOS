@@ -10,9 +10,14 @@ AR 		= $(CROSS_COMPILE)ar
 OBJDUMP = $(CROSS_COMPILE)objdump
 GDB     = $(CROSS_COMPILE)gdb
 
-CSRCS = entry.o main.o
+INC_KERNEL = -Iuart  -Iinclude
 
-#CFLAGS = 
+CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c)
+ 
+CFLAGS = -fno-builtin -nostdlib -nostdinc -Wall
+
+CFLAGS_KERNEL=$(INC_KERNEL) $(CFLAGS)
+
 .PHONY: clean
 
 QEMU = qemu-system-riscv64
@@ -23,16 +28,11 @@ QEMU_OPTS += -m 128M
 QEMU_OPTS += -nographic
 QEMU_OPTS += -smp 2
 
-all: $(KERNEL_QEMU)
 
-$(KERNEL_QEMU): $(CSRCS)
-	$(LD) -o kernel/hello.elf entry.o main.o -Tlink.ld
+all: $(KERNEL)
 
-entry.o: entry.s
-	$(CC) -nostdlib -c entry.s -o entry.o
-
-main.o: main.c 
-	$(CC) -nostdlib -c main.c -o main.o
+$(KERNEL): $(CSRCS) link.ld
+	$(CC) -o $(KERNEL) $(CSRCS) $(CFLAGS_KERNEL) -Tlink.ld
 
 run:  kernel/hello.elf
 	$(QEMU) $(QEMU_OPTS)

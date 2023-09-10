@@ -1,4 +1,6 @@
 #include "sbi.h"
+#include "uart.h"
+
 void main()
 {
     SBI_PUTCHAR('H');
@@ -7,5 +9,6 @@ void main()
     SBI_PUTCHAR('l');
     SBI_PUTCHAR('o');
     SBI_PUTCHAR('\n');
+    myputchar('f');
     while(1) {}
 }
