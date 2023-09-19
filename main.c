@@ -1,16 +1,15 @@
 #include "sbi.h"
 #include "string.h"
-
+#include "exception.h"
+#include "syscall.h"
+#include "time.h"
 
 void main()
 {
-    SBI_PUTCHAR('H');
-    SBI_PUTCHAR('e');
-    SBI_PUTCHAR('l');
-    SBI_PUTCHAR('l');
-    SBI_PUTCHAR('o');
-    SBI_PUTCHAR('\n');
-    panic("OS is a fucking bitch");
-
-    while(1) {}
+    panic("CoolleOS welcome!\n");
+    const_set_stvec();
+    enable_time_interrupt();
+    init_time();
+    interrupt_enable();
+    internal_syscall(0,0,0,0,0,0,0);
 }

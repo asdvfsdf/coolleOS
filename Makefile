@@ -10,11 +10,11 @@ AR 		= $(CROSS_COMPILE)ar
 OBJDUMP = $(CROSS_COMPILE)objdump
 GDB     = $(CROSS_COMPILE)gdb
 
-INC_KERNEL = -Iuart  -Iinclude -Iutils
+INC_KERNEL = -Iuart  -Iinclude -Iutils -Iexception/include -Itime
 
-CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c) $(wildcard utils/*.c)
+CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c) $(wildcard utils/*.c) $(wildcard exception/*.S) $(wildcard exception/*.c) $(wildcard time/*.c)
  
-CFLAGS = -fno-builtin -nostdlib -nostdinc -mcmodel=medany -Wall
+CFLAGS = -g -O0 -fno-builtin -nostdlib -mcmodel=medany -Wall -ffreestanding -march=rv64izicsr
 
 CFLAGS_KERNEL=$(INC_KERNEL) $(CFLAGS)
 
@@ -27,6 +27,9 @@ QEMU_OPTS += -bios $(FW_JUMP)
 QEMU_OPTS += -m 128M
 QEMU_OPTS += -nographic
 QEMU_OPTS += -smp 2
+QEMU_OPTS += -drive file=sdcard.img,if=none,format=raw,id=x0
+QEMU_OPTS += -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+QEMU_OPTS += -initrd initrd.img
 
 
 all: $(KERNEL)
@@ -36,6 +39,12 @@ $(KERNEL): $(CSRCS) link.ld
 
 run:  kernel/hello.elf
 	$(QEMU) $(QEMU_OPTS)
+
+test: kernel/hello.elf
+	$(QEMU) $(QEMU_OPTS) -s -S
+
+gdb:  kernel/hello.elf
+	riscv64-unknown-elf-gdb $(KERNEL)
 
 clean: 
 	rm -f *.o

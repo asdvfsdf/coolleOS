@@ -1,7 +1,12 @@
 {
     "files.associations": {
         "stdint.h": "c",
-        "uart.h": "c"
+        "uart.h": "c",
+        "stddef.h": "c",
+        "syscall.h": "c",
+        "exception.h": "c",
+        "context.h": "c",
+        "time.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
