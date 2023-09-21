@@ -55,6 +55,9 @@ gdb: $(GDB_TARGET) .gdbinit
 	@rm -f .qemu_pid
 
 push: 
+	git add .
+	git commit -m $(commit_message)
+	git push
 
 clean: 
 	rm -f kernel/hello.elf
