@@ -26,9 +26,15 @@ make PLATFORM=generic clean
 make PLATFORM=generic FW_JUMP_ADDR=0x80200000
 
 ### 运行项目
+#### 清理之前项目
 make clean
-
+#### 制作新镜像
 make
-
+#### 运行
 make run
-
+#### gdb调试
+make .gdbinit  
+make gdb
+#### push到仓库
+make push mes="thanks\ for\ your\ help"  
+mes的值是commit -m 要附带的信息
