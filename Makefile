@@ -56,7 +56,7 @@ gdb: $(GDB_TARGET) .gdbinit
 
 push: 
 	git add .
-	git commit -m $(commit_message)
+	git commit -m $(mes)
 	git push
 
 clean: 
