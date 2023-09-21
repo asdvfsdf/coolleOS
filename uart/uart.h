@@ -4,7 +4,7 @@
 #include "stdint.h"
 
 void myputchar(char c);
-char getchar();
+char mygetchar();
 
 
 #endif

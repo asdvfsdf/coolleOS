@@ -6,7 +6,12 @@
         "syscall.h": "c",
         "exception.h": "c",
         "context.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "string.h": "c",
+        "sbi.h": "c",
+        "stdarg.h": "c",
+        "stdio.h": "c",
+        "string": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

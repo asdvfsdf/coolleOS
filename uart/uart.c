@@ -25,7 +25,7 @@ void myputchar(char c) {
     *(char *)R(UART_THR) = c;
 }
 
-char getchar() {
+char mygetchar() {
     return *(char *)R(UART_RBR);
 }
 
