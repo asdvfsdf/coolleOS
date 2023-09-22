@@ -4,6 +4,8 @@
 
 #include "stdio.h"
 #include "stdint.h"
+#include "stdarg.h"
+#include "string.h"
 
 //Standard SBI Errors 
 #define SBI_SUCCESS 0
@@ -46,14 +48,19 @@ typedef struct sbiret {
 
 sbiret sbi_ecall(int eid, int fid, unsigned long arg0,unsigned long arg1, unsigned long arg2,unsigned long arg3, unsigned long arg4,unsigned long arg5);
 
-long sbi_base_ecall(int fid);
-
-void sbi_putchar(char ch);
-
-long sbi_set_timer(uint64_t stime_value);
-
+//sbi base extension
+long sbi_base_ecall(int fid, ...);
 long sbi_get_spec_version(void);
+long sbi_get_impl_id(void);
+long sbi_probe_extension(long extension_id);
+long sbi_get_mvendorid(void);
+long sbi_get_marchid(void);
+long sbi_get_mimpid(void);
 
+//sbi legacy extension
+long sbi_set_timer(uint64_t stime_value);
+void sbi_putchar(int ch);
+long sbi_getchar(void);
 
 
 #endif

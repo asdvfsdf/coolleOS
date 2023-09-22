@@ -5,6 +5,6 @@
 void trap_helper(){
     
     
-    printf("entry is ok!\n");
+    //printf("entry is ok!\n");
 
 }

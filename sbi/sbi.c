@@ -28,11 +28,17 @@ sbiret sbi_ecall(int eid, int fid, unsigned long arg0,
 
 
 
-long sbi_base_ecall(int fid){
+long sbi_base_ecall(int fid, ...){
+
+	va_list pArgs = NULL;
+	va_start(pArgs,fid);
+	long vArgs = va_arg(pArgs,long);
 
 	sbiret ret;
 
-	ret = sbi_ecall(BASE_EXTENSION_EID, fid, 0, 0, 0, 0, 0, 0);
+	ret = sbi_ecall(BASE_EXTENSION_EID, fid, vArgs, 0, 0, 0, 0, 0);
+
+	va_end(pArgs);
 
 	if (!ret.error){
 		return ret.value;
@@ -43,7 +49,7 @@ long sbi_base_ecall(int fid){
 
 }
 
-void sbi_putchar(char ch){
+void sbi_putchar(int ch){
 
     sbi_ecall(SBI_CONSOLE_PUTCHAR,LEGACY_FUNC_FID,ch,0,0,0,0,0);
 
@@ -64,8 +70,42 @@ long sbi_set_timer(uint64_t stime_value){
 	
 }
 
+long sbi_getchar(void){
+	sbiret ret;
+
+	ret = sbi_ecall(SBI_CONSOLE_GETCHAR,LEGACY_FUNC_FID, 0, 0, 0, 0, 0, 0);
+
+	if (!ret.error){
+		return ret.value;
+	}
+	else{
+		return ret.error;
+	}
+	
+}
+
 long sbi_get_spec_version(void){
 
 	return sbi_base_ecall(SBI_GET_SPEC_VERSION);
 
+}
+
+long sbi_get_impl_id(void){
+	return sbi_base_ecall(SBI_GET_IMPL_ID);
+}
+
+long sbi_probe_extension(long extension_id){
+	return sbi_base_ecall(SBI_PROBE_EXTENSION,extension_id);
+}
+
+long sbi_get_mvendorid(void){
+	return sbi_base_ecall(SBI_GET_MVENDORID);
+}
+
+long sbi_get_marchid(void){
+	return sbi_base_ecall(SBI_GET_MARCHID);
+}
+
+long sbi_get_mimpid(void){
+	return sbi_base_ecall(SBI_GET_MIMPID);
 }

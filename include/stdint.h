@@ -10,6 +10,8 @@ typedef unsigned int uint32_t;
 typedef long int64_t;
 typedef unsigned long uint64_t;
 
+typedef unsigned long u64;
+
 typedef int8_t int_least8_t;
 typedef int16_t int_least16_t;
 typedef int32_t int_least32_t;
