@@ -11,5 +11,6 @@ void main()
     // clock_init();
     // trap_enable();
 
+    printf("%d",strlen("qwerasdf"));
 
 }
