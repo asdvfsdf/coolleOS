@@ -1,2 +1,2 @@
 *.img
-doc/diary/*.md
+/doc/diary/*.md
