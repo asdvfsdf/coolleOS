@@ -1,22 +1,20 @@
-// #include "time.h"
-// #include "sbi.h"
+#include "time.h"
+#include "string.h"
+#include "stdio.h"
 
-// int tictok = 0;
-// static uint64_t timebase = 100000;
+volatile size_t tictok = 0;
 
-// void set_time(uint64_t time){
-//     SBI_TIMER(time);
-// }
+void clock_set_next_event(){
+    sbi_set_timer(get_time() + timebase);
+}
 
-// uint64_t get_time(){
-//     return return_time();
-// }
+void clock_init(){
 
-// void clocks_set_next_event(){
-//     set_time(get_time()+timebase);
-// }
+    set_sie_bit_1(SIE_STIE);
 
-// void init_time(){
-//     tictok = 0;
-//     clocks_set_next_event();
-// }
+    clock_set_next_event();
+
+    tictok = 0;
+
+    printf("set timer interrupts\n");
+}

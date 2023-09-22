@@ -11,7 +11,10 @@
         "sbi.h": "c",
         "stdarg.h": "c",
         "stdio.h": "c",
-        "string": "c"
+        "string": "c",
+        "trap_init.h": "c",
+        "trap_helper.h": "c",
+        "register.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

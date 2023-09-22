@@ -1,13 +1,22 @@
-// #ifndef __TIME_H__
-// #define __TIME_H__
-// #include "stdint.h"
+#ifndef __TIME_H__
+#define __TIME_H__
 
-// static inline uint64_t return_time(){
-//     uint64_t t;
-//     asm volatile("csrr %0, time":"=r"(t));
-//     return t;
-// }
+#include "stdint.h"
+#include "register.h"
+#include "sbi.h"
 
-// void init_time();
+static uint64_t timebase = 500;
 
-// #endif
+static inline unsigned long get_time(void){
+    
+    unsigned long x;
+    asm volatile("rdtime %0" : "=r"(x));
+    return x;
+}
+
+void clock_set_next_event();
+
+
+void clock_init();
+
+#endif

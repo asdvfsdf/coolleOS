@@ -10,9 +10,11 @@ AR 		= $(CROSS_COMPILE)ar
 OBJDUMP = $(CROSS_COMPILE)objdump
 GDB     = $(CROSS_COMPILE)gdb
 
-INC_KERNEL = -Iuart  -Iinclude -Iutils -Iexception/include -Itime -Isbi -Istdio -Istring
+INC_KERNEL = -Iuart  -Iinclude -Iutils -Iexception/include -Itime -Isbi -Istdio -Istring -Itrap 
 
-CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c) $(wildcard utils/*.c) $(wildcard exception/*.S) $(wildcard exception/*.c) $(wildcard time/*.c) $(wildcard sbi/*.c) $(wildcard stdio/*.c) $(wildcard string/*.c) 
+CSRCS = $(wildcard uart/*.c) $(wildcard *.s) $(wildcard *.c) \
+$(wildcard trap/*.S) $(wildcard trap/*.c) $(wildcard time/*.c) \
+$(wildcard sbi/*.c) $(wildcard stdio/*.c) $(wildcard string/*.c) \
 
 CFLAGS = -g -O0 -fno-builtin -nostdlib -mcmodel=medany -Wall -ffreestanding -march=rv64imafdzicsr -Tlink.ld
 

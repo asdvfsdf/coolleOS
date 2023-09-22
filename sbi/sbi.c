@@ -35,13 +35,9 @@ long sbi_base_ecall(int fid){
 	ret = sbi_ecall(BASE_EXTENSION_EID, fid, 0, 0, 0, 0, 0, 0);
 
 	if (!ret.error){
-		panic("value is ");
 		return ret.value;
 	}
 	else{
-
-		panic("ERROR:");
-
 		return ret.error;
 	}
 
@@ -51,6 +47,21 @@ void sbi_putchar(char ch){
 
     sbi_ecall(SBI_CONSOLE_PUTCHAR,LEGACY_FUNC_FID,ch,0,0,0,0,0);
 
+}
+
+long sbi_set_timer(uint64_t stime_value){
+
+	sbiret ret;
+
+	ret = sbi_ecall(SBI_SET_TIMER,LEGACY_FUNC_FID,stime_value, 0, 0, 0, 0, 0);
+
+	if (!ret.error){
+		return ret.value;
+	}
+	else{
+		return ret.error;
+	}
+	
 }
 
 long sbi_get_spec_version(void){

@@ -3,6 +3,7 @@
 #define _SBI_H
 
 #include "stdio.h"
+#include "stdint.h"
 
 //Standard SBI Errors 
 #define SBI_SUCCESS 0
@@ -49,6 +50,10 @@ long sbi_base_ecall(int fid);
 
 void sbi_putchar(char ch);
 
+long sbi_set_timer(uint64_t stime_value);
+
 long sbi_get_spec_version(void);
+
+
 
 #endif
