@@ -37,6 +37,8 @@
 #define EXC_LOAD_PAGE_FAULT   13
 #define EXC_STORE_PAGE_FAULT  15
 
+//#define SET_SATP_MOD_SV39 (8L << 60)
+
 
 static inline uint64_t get_sie(){
     uint64_t x;
@@ -53,6 +55,13 @@ static inline uint64_t get_sip(){
 static inline uint64_t get_sstatus(){
     uint64_t x;
     asm volatile("csrr %0, sstatus" : "=r"(x));
+    return x;
+}
+
+
+static inline uint64_t get_satp(){
+    uint64_t x;
+    asm volatile("csrr %0, satp":"=r"(x));
     return x;
 }
 
@@ -78,6 +87,13 @@ static inline void set_sstatus_bit_0(uint64_t x){
 static inline void set_sscratch(uint64_t x){
     asm volatile("csrw sstatus, %0" : : "r"(x));
 }
+
+// static inline void set_satp_mode_sv39(){
+    
+//     u64 sv39 = 0x8;
+
+//     asm volatile("csrw satp, %0" : : "r"(sv39 << 60));
+// }
 
 //set stvec trap_entry
 static inline void  const_set_stvec(){

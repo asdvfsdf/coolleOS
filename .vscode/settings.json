@@ -14,7 +14,8 @@
         "string": "c",
         "trap_init.h": "c",
         "trap_helper.h": "c",
-        "register.h": "c"
+        "register.h": "c",
+        "stdlib.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

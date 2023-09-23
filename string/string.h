@@ -9,9 +9,9 @@
 #define NULL ((void *)0)
 #endif
 
-typedef unsigned int size_t;
 
 int strlen(const char *str);
+//char *strcpy(char* dest, const char *src);
 
 
 #endif

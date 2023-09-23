@@ -3,6 +3,7 @@
 #include "stdio.h"
 #include "time.h"
 #include "trap_init.h"
+#include <stdlib.h>
 
 
 void main()
@@ -11,6 +12,6 @@ void main()
     // clock_init();
     // trap_enable();
 
-    printf("%d",strlen("qwerasdf"));
+    printf("hello world\n");
 
 }
