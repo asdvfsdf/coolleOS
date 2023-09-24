@@ -60,7 +60,7 @@ gdb: $(GDB_TARGET) .gdbinit
 push: 
 	git add .
 	git commit -m $(mes)
-	ggit push
+	git push
 
 clean: 
 	rm -f kernel/hello.elf
