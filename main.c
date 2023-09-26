@@ -9,8 +9,6 @@
 
 void main()
 {
-    
-    
     // trap_init();
     // clock_init();
     // trap_enable();

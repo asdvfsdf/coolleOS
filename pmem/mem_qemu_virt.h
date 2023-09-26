@@ -1,6 +1,9 @@
 #ifndef __MEM_QEMU_VIRT_H__
 #define __MEM_QEMU_VIRT_H__
 
+#define PHYSICAL_PAGE_SIZE 4096
+#define PHYSICAL_PAGE_SHIFT 12
+
 //physical memory
 //128MB
 #define PHYSICAL_MEM_END 0x88000000
@@ -16,6 +19,7 @@ extern unsigned int end;
 
 //0x80000000+opensbi+kernel
 #define KERNEL_END (unsigned int)&end
+
 
 
 #endif
