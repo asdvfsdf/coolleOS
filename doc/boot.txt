@@ -57,3 +57,58 @@ stack_top:
 root_pte:
     .zero 511*8
     .quad (0x80000 << 10) | 0xcf
+
+
+
+    lui t0, %hi(root_pte)
+
+    li t1, 0xffffffffc0000000 - 0x80000000
+
+    sub t0, t0, t1
+
+    srli t0, t0, 12
+
+    li t1, 8<<60
+    
+    or t0, t0, t1
+
+    csrw satp, t0  
+
+    sfence.vma
+
+    lui sp, %hi(stack_top)
+
+    lui t0, %hi(main)           # setup stack pointer
+    addi t0, t0, %lo(main)                     # 将栈指针(sp)设置为stack_top的地址
+
+    OUTPUT_ARCH( "riscv" )
+OUTPUT_FORMAT("elf64-littleriscv")
+ENTRY( _start )
+SECTIONS
+{
+  /* text: test code section */
+  . = 0xFFFFFFFFC0200000;
+  start = .;
+
+  .text : {
+      stext = .;
+        *(.text.entry)
+        *(.text .text.*)
+        . = ALIGN(4K);
+      etext = .;
+  }
+
+  .data : {
+      sdata = .;
+        *(.data .data.*)
+      edata = .;
+  }
+
+  .bss : {
+      sbss = .;
+        *(.bss .bss.*)
+      ebss = .;
+  }
+  
+  PROVIDE(end = .);
+}
