@@ -5,7 +5,7 @@
 #include "stdio.h"
 #include "stdint.h"
 #include "stdarg.h"
-#include "string.h"
+#include "stddef.h"
 
 //Standard SBI Errors 
 #define SBI_SUCCESS 0

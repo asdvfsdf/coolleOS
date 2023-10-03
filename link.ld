@@ -26,5 +26,5 @@ SECTIONS
         *(.bss .bss.*)
         ebss = .;
   }
-  PROVIDE(end = .);
+  PROVIDE(kernel_end = .);
 }

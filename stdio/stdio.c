@@ -150,6 +150,8 @@ int printf(const char* str, ...)
 
                 ret_num += cnt;// 字符个数加上整数的长度
                 // 将整数转为单个字符打印
+                putchar('0');
+                putchar('x');
                 while (cnt)
                 {
                     val_seg = ArgHexVal / m_pow_n(16, cnt - 1);

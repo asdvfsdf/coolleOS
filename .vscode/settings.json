@@ -18,7 +18,17 @@
         "stdlib.h": "c",
         "mem_qemu_virt.h": "c",
         "link.h": "c",
-        "pmem.h": "c"
+        "pmem.h": "c",
+        "lock.h": "c",
+        "array": "c",
+        "compare": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "easy_mm.h": "c",
+        "list.h": "c",
+        "easy_mem.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

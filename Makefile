@@ -11,13 +11,13 @@ OBJDUMP = $(CROSS_COMPILE)objdump
 GDB     = $(CROSS_COMPILE)gdb
 
 INC_KERNEL = -Iuart  -Iinclude -Iutils -Iexception/include -Itime -Isbi -Istdio -Istring \
- -Itrap -Ivmem -Ipmem -Ilock -Ilink
+ -Itrap -Ivmem -Ipmem -Ilock -Ilist
 
 CSRCS = $(wildcard uart/*.c) $(wildcard *.S) $(wildcard *.c) \
 $(wildcard trap/*.S) $(wildcard trap/*.c) $(wildcard time/*.c) \
 $(wildcard sbi/*.c) $(wildcard stdio/*.c) $(wildcard string/*.c) \
 $(wildcard vmem/*.c) $(wildcard pmem/*.c) $(wildcard lock/*.c) \
-$(wildcard link/*.c)
+$(wildcard list/*.c)
 
 CFLAGS = -g -O0 -fno-builtin -nostdlib -mcmodel=medany -Wall -ffreestanding -march=rv64imafdzicsr -Tlink.ld
 

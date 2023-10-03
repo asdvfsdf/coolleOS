@@ -1,11 +1,13 @@
 #include "lock.h"
 
 void init_lock(struct lock* lock,char* name){
+    
     lock->name = name;
     lock->locked = 0;
 }
 
 void lockit(struct lock* lock){
+    
     if(lock->locked == 1){
         panic("the lock has been locked\n");
     }else{

@@ -1,8 +1,11 @@
 #ifndef __MEM_QEMU_VIRT_H__
 #define __MEM_QEMU_VIRT_H__
 
-#define PHYSICAL_PAGE_SIZE 4096
-#define PHYSICAL_PAGE_SHIFT 12
+#define PAGE_SIZE 4096
+#define PAGE_SHIFT 12
+
+//qemu physical memory begin
+#define PHYSICAL_MEM_BEGAIN 0x80000000
 
 //physical memory
 //128MB
@@ -15,11 +18,10 @@
 #define KERNEL_BASE 0x80200000
 
 //from link.ld
-extern unsigned int end;
+extern unsigned int kernel_end;
 
 //0x80000000+opensbi+kernel
-#define KERNEL_END (unsigned int)&end
-
+#define KERNEL_END &kernel_end
 
 
 #endif

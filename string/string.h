@@ -5,10 +5,6 @@
 #include "stdint.h"
 
 
-#ifndef NULL
-#define NULL ((void *)0)
-#endif
-
 
 int strlen(const char *str);
 
