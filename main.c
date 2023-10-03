@@ -12,13 +12,17 @@
 void main()
 {
     printf("hello world\n");
-    
-    // trap_init();
-    // clock_init();
-    // trap_enable();
-    
+
     //暂且就用这样简单的分配吧
     easy_init_mem();
+
+    //初始化了stvec和sscratch寄存器
+    trap_init();
+    //设置了SIE寄存器和时钟周期
+    clock_init();
+    //设置了sstatus寄存器
+    trap_enable();
+
 
 
 }

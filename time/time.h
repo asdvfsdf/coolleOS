@@ -5,7 +5,9 @@
 #include "register.h"
 #include "sbi.h"
 
-static uint64_t timebase = 500;
+extern volatile size_t tictok;
+
+static uint64_t timebase = 1000;
 
 static inline unsigned long get_time(void){
     
